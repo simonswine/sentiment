@@ -1,0 +1,2 @@
+defmodule Sentiment do
+end
