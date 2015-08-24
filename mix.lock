@@ -1,3 +1,6 @@
-%{"httpotion": {:hex, :httpotion, "2.1.0"},
+%{"amrita": {:git, "git://github.com/josephwilk/amrita.git", "f51ae5225fb77ed0238e29fc80dbfa95e77c3ceb", []},
+  "httpotion": {:hex, :httpotion, "2.1.0"},
   "ibrowse": {:git, "git://github.com/cmullaparthi/ibrowse.git", "ea3305d21f37eced4fac290f64b068e56df7de80", [tag: "v4.1.2"]},
+  "meck": {:hex, :meck, "0.8.3"},
+  "mock": {:git, "git://github.com/jjh42/mock.git", "5a6bb6dd70ccc54997dda72f18f0ab85138c1253", []},
   "poison": {:hex, :poison, "1.4.0"}}

@@ -1,17 +1,21 @@
-
 defmodule Hackernews do
+  @base_url 'https://hacker-news.firebaseio.com'
+
   def get_id(id) do
-    HTTPotion.get("https://hacker-news.firebaseio.com/v0/item/#{id}.json?print=pretty").body
-      |> Poison.Parser.parse!
+    get_json_from_url "#{@base_url}/v0/item/#{id}.json"
   end
 
   def get_top do
-    HTTPotion.get("https://hacker-news.firebaseio.com/v0/topstories.json").body
+    get_json_from_url "#{@base_url}/v0/topstories.json"
+  end
+
+  def get_json_from_url(url) do
+    HTTPotion.get(url).body
       |> Poison.Parser.parse!
   end
 
   def process_top do
-    Hackernews.get_top 
+    Hackernews.get_top
       |> iterate
   end
 
