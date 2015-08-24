@@ -5,7 +5,6 @@ defmodule Hackernews do
       |> Poison.Parser.parse!
   end
 
-
   def get_top do
     HTTPotion.get("https://hacker-news.firebaseio.com/v0/topstories.json").body
       |> Poison.Parser.parse!
@@ -38,13 +37,19 @@ defmodule Hackernews do
       |> iterate_comments
   end
 
-  def process_comment(comment) do
-    IO.puts get_id(comment)
-
+  def process_comment(comment_id) do
+    get_sentiment(
+      "https://hacker-news.firebaseio.com/v0/item/#{comment_id}"
+    )
   end
 
   def get_sentiment(url) do
-    HTTPotion.get("http://access.alchemyapi.com/calls/url/URLGetTextSentiment?url=#{url}&apikey=1ecee1905f971b1fcbc20c8da4d9f7496969a0b1")    
+    resp = HTTPotion.get(
+      "http://access.alchemyapi.com/calls/url/URLGetTextSentiment?url=#{url}&apikey=1ecee1905f971b1fcbc20c8da4d9f7496969a0b1&outputMode=json",
+      [timeout: 10000]
+    ).body |> Poison.Parser.parse!
+    IO.puts inspect resp
   end
+
 
 end
