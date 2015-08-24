@@ -29,7 +29,7 @@ defmodule Sentiment.Mixfile do
       {:ibrowse, github: "cmullaparthi/ibrowse", tag: "v4.1.2"},
       {:httpotion, "~> 2.1.0"},
       {:poison, "~> 1.4.0"},
-      {:mock, "~>0.1.1", github: "jjh42/mock"},
+      {:meck, "~>0.8.3"}
     ]
   end
 

@@ -15,13 +15,20 @@ defmodule Hackernews do
   end
 
   def process_top do
-    Hackernews.get_top
-      |> iterate
+    get_top
+      |> iterate_top
   end
 
-  def iterate([head | tail]) do
-    Hackernews.process_story(head)
-    Hackernews.iterate(tail)
+  def iterate_top([head|tail], stories) do
+    story = action_top(head)
+    iterate_top(tail, stories + story)
+  end
+
+  def iterate_top([]) do
+  end
+
+  def action_top(id) do
+    get_id(id)
   end
 
   def iterate_comments([head | tail]) do
